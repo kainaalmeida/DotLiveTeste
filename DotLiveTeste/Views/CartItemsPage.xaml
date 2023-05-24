@@ -31,7 +31,8 @@
                             Grid.Column="1"
                             FontAttributes="Bold"
                             FontSize="Medium"
-                            Text="{Binding Name}" />
+                            Text="{Binding Name}"
+                            TextColor="Black" />
 
                         <Label
                             Grid.Row="1"
@@ -40,16 +41,17 @@
                             Text="{Binding Price, StringFormat='R$ {0:F2}'}"
                             TextColor="Red" />
 
-                        <Image
+                        <Label
                             Grid.Column="2"
-                            HeightRequest="24"
-                            HorizontalOptions="End"
-                            Source="trash.svg"
-                            VerticalOptions="Center">
-                            <Image.GestureRecognizers>
+                            FontFamily="FontAwesomeSolid"
+                            FontSize="Large"
+                            Text=""
+                            TextColor="Black">
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CartItemsViewModel}}, Path=RemoveItemCommand}" CommandParameter="{Binding .}" />
-                            </Image.GestureRecognizers>
-                        </Image>
+                            </Label.GestureRecognizers>
+                        </Label>
+
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

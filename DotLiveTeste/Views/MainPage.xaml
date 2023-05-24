@@ -16,11 +16,14 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Margin="5" HasShadow="False">
+                    <Frame
+                        Margin="5"
+                        BackgroundColor="White"
+                        HasShadow="False">
                         <Grid RowDefinitions="auto,1,auto" RowSpacing="5">
                             <Grid
                                 x:DataType="models:Product"
-                                ColumnDefinitions="auto,*,auto,auto"
+                                ColumnDefinitions="auto,*,auto"
                                 RowDefinitions="auto,auto">
                                 <Image
                                     Grid.RowSpan="2"
@@ -32,12 +35,14 @@
                                     Grid.Column="1"
                                     FontAttributes="Bold"
                                     FontSize="Medium"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}"
+                                    TextColor="Black" />
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     FontSize="Micro"
-                                    Text="{Binding Description}" />
+                                    Text="{Binding Description}"
+                                    TextColor="Black" />
                                 <Label
                                     Grid.RowSpan="2"
                                     Grid.Column="2"
@@ -62,32 +67,35 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Border Grid.Row="1" Padding="18">
+        <Border
+            Grid.Row="1"
+            Padding="18"
+            BackgroundColor="White">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20,20,0,0" />
             </Border.StrokeShape>
 
             <Grid ColumnDefinitions="*,*,*">
-                <Image
-                    HeightRequest="24"
-                    HorizontalOptions="Start"
-                    Source="cart.svg" />
+                <Label
+                    Margin="20,0,0,0"
+                    FontFamily="FontAwesomeSolid"
+                    FontSize="Large"
+                    Text=""
+                    TextColor="Black" />
                 <Label
                     Grid.Column="1"
+                    FontAttributes="Bold"
                     HorizontalTextAlignment="Center"
-                    Text="Ver carrinho:" />
+                    Text="Ver carrinho:"
+                    TextColor="Black" />
                 <Label
                     Grid.Column="2"
+                    Margin="0,0,20,0"
+                    FontAttributes="Bold"
                     HorizontalTextAlignment="End"
-                    Text="{Binding ProductsCart.Count}" />
+                    Text="{Binding ProductsCart.Count}"
+                    TextColor="Black" />
             </Grid>
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.8"
-                    Radius="20"
-                    Offset="15,15" />
-            </Border.Shadow>
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding GoToCartItemsCommand}" NumberOfTapsRequired="1" />
             </Border.GestureRecognizers>
