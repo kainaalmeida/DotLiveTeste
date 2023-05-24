@@ -9,11 +9,8 @@
     x:DataType="vm:CartItemsViewModel"
     BackgroundColor="White">
     <Grid RowDefinitions="*,1,auto,auto">
-        <CollectionView ItemsSource="{Binding ProductsCart}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
+        <StackLayout BindableLayout.ItemsSource="{Binding ProductsCart}">
+            <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Grid
                         Padding="10"
@@ -24,6 +21,8 @@
 
                         <Image
                             Grid.RowSpan="2"
+                            MaximumHeightRequest="100"
+                            MaximumWidthRequest="100"
                             Source="{Binding Photo}"
                             WidthRequest="80" />
 
@@ -42,11 +41,13 @@
                             TextColor="Red" />
 
                         <Label
+                            Grid.RowSpan="2"
                             Grid.Column="2"
                             FontFamily="FontAwesomeSolid"
                             FontSize="Large"
                             Text=""
-                            TextColor="Black">
+                            TextColor="Black"
+                            VerticalOptions="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CartItemsViewModel}}, Path=RemoveItemCommand}" CommandParameter="{Binding .}" />
                             </Label.GestureRecognizers>
@@ -54,8 +55,8 @@
 
                     </Grid>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
 
         <BoxView Grid.Row="1" Color="#cecece" />
 
